@@ -5,11 +5,11 @@ experiment_name: 'singleline_thai'
 train_data: 'C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training'
 valid_data: 'C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation'
 manualSeed: 1111
-workers: 0
+workers: 4
 batch_size: 32 #32
 num_iter: 300000
 valInterval: 20000
-saved_model: 'C:/Users/joman/Downloads/pretrained_model-20211102T103352Z-001/pretrained_model/None-ResNet-None-CTC.pth' #'saved_models/en_filtered/iter_300000.pth'
+saved_model: 'C:/Users/joman/Downloads/pretrained_model-20211102T103352Z-001/pretrained_model/TPS-ResNet-BiLSTM-Attn.pth' #'saved_models/en_filtered/iter_300000.pth'
 FT: False
 optim: False # default is Adadelta
 lr: 1.

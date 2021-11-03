@@ -1,0 +1,673 @@
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training
+opt.select_data: ['singlelinetemp']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training	 dataset: singlelinetemp
+sub-directory:	/singlelinetemp\single_test	 num samples: 17
+sub-directory:	/singlelinetemp\single_train	 num samples: 18
+sub-directory:	/singlelinetemp\single_valid	 num samples: 11
+num total samples of singlelinetemp: 46 x 1.0 (total_data_usage_ratio) = 46
+num samples of singlelinetemp per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation	 dataset: /
+sub-directory:	/.	 num samples: 18
+--------------------------------------------------------------------------------
