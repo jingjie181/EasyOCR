@@ -2,14 +2,14 @@ number: '0123456789'
 symbol: "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ €"
 lang_char: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzกขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮอะอิอึอุเอะแอะโอะเอาะเออะเอียะเอือะอัวะอำไอใอเอาอาอีอือูเอแอโอออเออเอียเอืออัว'
 experiment_name: 'singleline_thai'
-train_data: 'C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/training'
-valid_data: 'C:/Users/joman/Desktop/easyocr/data_thaisingle_test/data_lmdb_release/validation'
+train_data: 'all_data'
+valid_data: 'all_data/data_valid'
 manualSeed: 1111
-workers: 4
+workers: 6
 batch_size: 32 #32
 num_iter: 300000
 valInterval: 20000
-saved_model: 'saved_models/None-ResNet-None-CTC.pth' #'C:/Users/joman/Downloads/pretrained_model-20211102T103352Z-001/pretrained_model/None-ResNet-None-CTC.pth' 
+saved_model: '' #'C:/Users/joman/Downloads/pretrained_model-20211102T103352Z-001/pretrained_model/None-ResNet-None-CTC.pth' 
 FT: False
 optim: False # default is Adadelta
 lr: 1.
@@ -18,7 +18,7 @@ rho: 0.95
 eps: 0.00000001
 grad_clip: 5
 #Data processing
-select_data: 'singlelinetemp' # this is dataset folder in train_data
+select_data: 'data_train' # this is dataset folder in train_data
 batch_ratio: '1' 
 total_data_usage_ratio: 1.0
 batch_max_length: 34 
