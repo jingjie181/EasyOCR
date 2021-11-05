@@ -9,7 +9,7 @@ workers: 4
 batch_size: 32 #32
 num_iter: 300000
 valInterval: 20000
-saved_model: 'saved_models/singleline_thai/thai.pth' #'C:/Users/joman/Downloads/pretrained_model-20211102T103352Z-001/pretrained_model/TPS-ResNet-BiLSTM-CTC.pth' 
+saved_model: 'saved_models/None-ResNet-None-CTC.pth' #'C:/Users/joman/Downloads/pretrained_model-20211102T103352Z-001/pretrained_model/None-ResNet-None-CTC.pth' 
 FT: False
 optim: False # default is Adadelta
 lr: 1.
@@ -32,8 +32,8 @@ contrast_adjust: 0.0
 data_filtering_off: False
 # Model Architecture
 Transformation: 'None'
-FeatureExtraction: 'VGG'
-SequenceModeling: 'BiLSTM'
+FeatureExtraction: 'ResNet'
+SequenceModeling: 'None'
 Prediction: 'CTC'
 num_fiducial: 20
 input_channel: 1
