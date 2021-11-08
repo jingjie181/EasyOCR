@@ -148,3 +148,48 @@ Total_batch_size: 32 = 32
 dataset_root:    all_data/data_valid	 dataset: /
 sub-directory:	/.	 num samples: 10
 --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 50
+num total samples of data_train: 50 x 1.0 (total_data_usage_ratio) = 50
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 10
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 50
+num total samples of data_train: 50 x 1.0 (total_data_usage_ratio) = 50
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 10
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 50
+num total samples of data_train: 50 x 1.0 (total_data_usage_ratio) = 50
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 10
+--------------------------------------------------------------------------------
