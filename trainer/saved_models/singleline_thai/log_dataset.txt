@@ -160,3 +160,108 @@ Total_batch_size: 32 = 32
 dataset_root:    all_whole_data/data_valid	 dataset: /
 sub-directory:	/.	 num samples: 30
 --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 302
+num total samples of data_train: 302 x 1.0 (total_data_usage_ratio) = 302
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 112
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 167
+num total samples of data_train: 167 x 1.0 (total_data_usage_ratio) = 167
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 603
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: C:/Users/joman/Documents/GitHub/EasyOCR/trainer/all_data
+opt.select_data: ['C:/Users/joman/Documents/GitHub/EasyOCR/trainer/all_data/data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Documents/GitHub/EasyOCR/trainer/all_data	 dataset: C:/Users/joman/Documents/GitHub/EasyOCR/trainer/all_data/data_train
+sub-directory:	/data_train	 num samples: 167
+num total samples of C:/Users/joman/Documents/GitHub/EasyOCR/trainer/all_data/data_train: 167 x 1.0 (total_data_usage_ratio) = 167
+num samples of C:/Users/joman/Documents/GitHub/EasyOCR/trainer/all_data/data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    C:/Users/joman/Documents/GitHub/EasyOCR/trainer/all_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 603
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 77
+num total samples of data_train: 77 x 1.0 (total_data_usage_ratio) = 77
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 254
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 136
+num total samples of data_train: 136 x 1.0 (total_data_usage_ratio) = 136
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 28
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 136
+num total samples of data_train: 136 x 1.0 (total_data_usage_ratio) = 136
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 28
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 28
+num total samples of data_train: 28 x 1.0 (total_data_usage_ratio) = 28
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 20
+--------------------------------------------------------------------------------
