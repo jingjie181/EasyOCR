@@ -108,6 +108,5 @@ ENV/
 .vs/
 .idea/
 *.pth
-*.ipynb
 *.pth
 *.pth
