@@ -109,6 +109,5 @@ ENV/
 .idea/
 *.pth
 *.ipynb
-*.png
 *.pth
 *.pth
