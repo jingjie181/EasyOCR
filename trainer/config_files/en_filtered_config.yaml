@@ -2,8 +2,8 @@ number: '0123456789'
 symbol: "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~ €"
 lang_char: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzกขฃคฅฆงจฉชซฌญฎฏฐฑฒณดตถทธนบปผฝพฟภมยรลวศษสหฬอฮอะอิอึอุเอะแอะโอะเอาะเออะเอียะเอือะอัวะอำไอใอเอาอาอีอือูเอแอโอออเออเอียเอืออัว'
 experiment_name: 'singleline_thai'
-train_data: 'all_data'
-valid_data: 'all_data/data_valid'
+train_data: 'all_whole_data' #'all_data/single_line/'
+valid_data: 'all_whole_data/data_valid'
 manualSeed: 1111
 workers: 6
 batch_size: 32 #32
@@ -29,7 +29,7 @@ contrast_adjust: False
 sensitive: True
 PAD: True
 contrast_adjust: 0.0
-data_filtering_off: False
+data_filtering_off: True
 # Model Architecture
 Transformation: 'None'
 FeatureExtraction: 'ResNet'

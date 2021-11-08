@@ -64,3 +64,99 @@ Total_batch_size: 32 = 32
 dataset_root:    all_data/data_valid	 dataset: /
 sub-directory:	/.	 num samples: 18
 --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_data/whole/img/
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_data/whole/img/	 dataset: data_train
+sub-directory:	/data_train	 num samples: 125
+num total samples of data_train: 125 x 1.0 (total_data_usage_ratio) = 125
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_data/whole/img/data_valid/	 dataset: /
+sub-directory:	/.	 num samples: 25
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_data/whole/img
+opt.select_data: ['all_data/whole/img/data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_data/whole/img	 dataset: all_data/whole/img/data_train
+sub-directory:	/data_train	 num samples: 125
+num total samples of all_data/whole/img/data_train: 125 x 1.0 (total_data_usage_ratio) = 125
+num samples of all_data/whole/img/data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_data/whole/img/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 25
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_whole_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_whole_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 125
+num total samples of data_train: 125 x 1.0 (total_data_usage_ratio) = 125
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_whole_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_whole_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 125
+num total samples of data_train: 125 x 1.0 (total_data_usage_ratio) = 125
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_whole_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 25
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_data/whole/img
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_data/whole/img	 dataset: data_train
+sub-directory:	/data_train	 num samples: 0
+num total samples of data_train: 0 x 1.0 (total_data_usage_ratio) = 0
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+dataset_root: all_whole_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_whole_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 125
+num total samples of data_train: 125 x 1.0 (total_data_usage_ratio) = 125
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_whole_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 25
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+dataset_root: all_whole_data
+opt.select_data: ['data_train']
+opt.batch_ratio: ['1']
+--------------------------------------------------------------------------------
+dataset_root:    all_whole_data	 dataset: data_train
+sub-directory:	/data_train	 num samples: 35
+num total samples of data_train: 35 x 1.0 (total_data_usage_ratio) = 35
+num samples of data_train per batch: 32 x 1.0 (batch_ratio) = 32
+--------------------------------------------------------------------------------
+Total_batch_size: 32 = 32
+--------------------------------------------------------------------------------
+dataset_root:    all_whole_data/data_valid	 dataset: /
+sub-directory:	/.	 num samples: 30
+--------------------------------------------------------------------------------

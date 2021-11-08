@@ -376,10 +376,6 @@ class Averager(object):
 
 
 
-
-
-
-
 import requests
 import pandas as pd
 import numpy as np
@@ -640,3 +636,618 @@ def get_accuracy_field(df, field, captured_group): #df, time_text, time_captured
     final = df.groupby([field]).agg({'did':"count", captured_group:'nunique'}).reset_index()
     final = final.assign(accuracy_col = lambda x: x[captured_group].apply(lambda y: y/sum(x[captured_group]) if y == max(x[captured_group]) else 0)).accuracy_col.sum()
     return final
+
+
+
+
+
+#JABEZ's changes "1 day"-> "3 day"
+def get_all_sdr(date, outlets):
+    qstr = f"""
+    with suntec_outlets as (
+        select id, name
+        from outlet
+        where id in {outlets}
+        ),
+
+    dates as (
+        SELECT generate_series
+        ( '{date}'::date + interval '8 hours'
+            , '{date}'::date  + interval '8 hours'
+            , '3 day'::interval)::date as date
+    ),
+
+    suntec_outlet_info as (
+        select *
+        from suntec_outlets a
+        cross join dates b
+        where id in {outlets}
+        ),
+
+    ranked_sdr as (
+        select 
+        id as outlet_id, 
+        name,
+        date,
+        receipt_id as did, 
+        status, 
+        timestamp, 
+        content::json, 
+        difference, 
+        trans_diff,
+        row_number() over (partition by outlet_id, date,receipt_id order by date, timestamp desc) as ranks
+        from (
+            select distinct *
+            from suntec_outlet_info a 
+            left join (select receipt_id, work_date, outlet_id, 
+                        status, timestamp, content, difference, trans_diff 
+                        from outlet_data_event) b 
+            on a.date = b.work_date and a.id = b.outlet_id
+        ) sub
+    )
+
+    select 
+        outlet_id, 
+        name,
+        date, 
+        did,
+        content ->> 'reportTotalRevenue' as sdr_total_revenue
+    from ranked_sdr
+    where (ranks = 1) or (ranks >= 2 and did is null)
+    order by outlet_id, date
+    """
+    return aimbox_rds.query(text=qstr)
+
+#def get_all_sdr_from_aimbox(date = 'now()'):
+#matter of approach: when unclear as to what is the correct SDR, is the latest did the correct one, or the 
+#did with the closest amount to the closed bill amount?
+###no value add for now because workdate is used as query instead of created_at 
+def get_closed_bills_total(outlet_id, date):
+    qstr = f"""
+    with trans_base as(
+        SELECT 
+            max(id) AS id
+        FROM 
+            aimbox
+        WHERE 
+            outlet_id = {outlet_id}
+        AND 
+            workdate = '{date}'
+        AND type = 'closed bill'   
+        GROUP BY 
+            outlet_id, workdate, receipt_id 
+    )
+
+    select sum(CASE
+                WHEN REGEXP_REPLACE(text, '[0-9,]+\.\d{{1,2}}', '', 'g') = '' then text::float
+                else 0
+                end) as closeddbill_total_revenue, 
+            sum(CASE
+                WHEN REGEXP_REPLACE(text, '[0-9,]+\.\d{{1,2}}', '', 'g') = '' then 1
+                else 0
+                end) as closeddbill_transaction_counts,
+            workdate as date, 
+            outlet_id
+    from aimbox a
+    join trans_base b 
+    on a.id = b.id
+    group by workdate, outlet_id
+    """
+    return aimbox.query(text=qstr)
+
+def get_sdr_created_at(outlet_id, did):
+    qstr = f"""
+    select id as did, (created_at + interval '8 hours')::date as created_at
+    from aimbox
+    where id = '{did}'
+    and outlet_id = {outlet_id}
+    """
+    return aimbox.query(text=qstr)
+
+def get_closed_bill_mode(outlet_id, created_at_date, did):
+    qstr = f"""
+    SELECT 
+    mode() WITHIN GROUP (ORDER BY date) as closedbill_mode_workdate,
+    outlet_id,
+    {did} as did,
+    '{created_at_date}'::date as date
+    from aimbox
+    where outlet_id = {outlet_id}
+    and datetime BETWEEN '{created_at_date}'::date 
+    AND '{created_at_date}'::date + interval '33 hours'
+
+    and created_at + interval '8 hours' BETWEEN '{created_at_date}'::date 
+    AND '{created_at_date}'::date + interval '33 hours'
+    and type = 'closed bill'
+    group by outlet_id, did, '{created_at_date}'::date
+    """
+    return aimbox.query(text=qstr)
+
+
+def get_sdr(sdr_did):
+    qstr = f"""
+        SELECT
+            outlet_id, 
+            work_date,
+            content::json -> 'reportTotalRevenue' as sdr_total,
+            content::json -> 'dashboardTotalRevenue' as dashboard_total,
+            content::json -> 'dashboardTransactions' as num_transaction
+        FROM 
+            outlet_data_event 
+        WHERE 
+            receipt_id = {sdr_did}
+        ORDER BY
+            work_date
+
+        """
+    return aimbox_rds.query(text=qstr)
+
+def get_closed_bill_workdate(outlet_id):
+    qstr = f"""
+        SELECT
+            date
+        FROM 
+            aimbox 
+        WHERE 
+            outlet_id = {outlet_id}
+        AND
+            type = 'closed bill'
+        AND
+            created_at BETWEEN now() AND now() - interval '1 day'
+
+        """
+    return aimbox.query(text=qstr)
+
+def sdr_workdate_check(sdr_workdate, maj_closed_bill_workdate,current_did):
+    if str(sdr_workdate) == str(maj_closed_bill_workdate):
+        return int(current_did)
+    else:
+        return "Error! Check " + str(current_did)
+
+def extract_dids_for_outlet(outlet_id,did_col_name, gross_sales_sdrs_col_name, gross_sales_closed_bills_col_name, workdate,df):
+    df_temp = df[(df.outlet_id == outlet_id) & (df.workdate == workdate)]
+    sdr_did_list = df_temp[did_col_name].tolist()
+    gross_sales_sdrs = df_temp[gross_sales_sdrs_col_name].tolist()
+    gross_sales_closed_bills = df_temp[gross_sales_closed_bills_col_name].tolist()
+    gross_sales_closed_bills = gross_sales_closed_bills[0]
+    #print(sdr_did_list, outlet_id)
+    return sdr_did_list, gross_sales_sdrs,gross_sales_closed_bills
+
+def function1(current_did):
+    # SDR
+    data_sdr = get_sdr(current_did).drop_duplicates().reset_index()
+    sdr_workdate = str(data_sdr.work_date[0])
+    outlet_id = (data_sdr.outlet_id)[0]
+
+
+    # Closed Bill
+    closed_bill_workdate = get_closed_bill_workdate(outlet_id)
+    maj_closed_bill_workdate = closed_bill_workdate.mode()
+    maj_closed_bill_workdate = str(maj_closed_bill_workdate['date'][0])
+    return sdr_workdate, maj_closed_bill_workdate
+
+def function2(gross_sales_sdrs):
+    if gross_sales_sdrs.count(gross_sales_sdrs[0]) == len(gross_sales_sdrs):
+        return "total collection of all SDRs is the same"
+    else:
+        return "total collection of SDRs are different"
+
+def function3(current_did,index_pos_current_did,gross_sales_sdrs):
+    if gross_sales_sdrs[index_pos_current_did] == max(gross_sales_sdrs):
+        return "latest sdr has highest total collection"
+        
+    return "proceed to check 4"
+
+
+
+#changed function 4 to smallest margin
+def function4(sdr_did_list,gross_sales_closed_bills,gross_sales_sdrs,margin=0.10):    
+    within_margin=[]
+    for i in gross_sales_sdrs:
+        float_i = float(i)
+        if margin*gross_sales_closed_bills>=abs(gross_sales_closed_bills-float_i):
+            index_pos2=gross_sales_sdrs.index(i)
+            within_margin.append([abs(gross_sales_closed_bills-float_i),sdr_did_list[index_pos2]])
+    within_margin.sort()
+
+    if len(within_margin)==0:
+        return sdr_did_list[0]
+    else:
+        # print(within_margin[0][1])
+        # print("4")
+        return within_margin[0][1]
+
+
+
+# def function4(sdr_did_list,gross_sales_closed_bills,gross_sales_sdrs,margin=0.10):    
+#     within_margin=[]
+#     for i in gross_sales_sdrs:
+#         float_i = float(i)
+#         if margin*gross_sales_closed_bills>=abs(gross_sales_closed_bills-float_i):
+#             index_pos2=gross_sales_sdrs.index(i)
+#             within_margin.append([float(i),sdr_did_list[index_pos2]])
+#     within_margin.sort(reverse=True)
+#     if len(within_margin)==0:
+#         return "FALSE, no suitable SDRs found"
+#     else:
+#         return within_margin[0][1]
+
+
+
+def sdr_error_detect(outlet_id, workdate,df):   
+    
+    ##defining variables(optional functionality)
+    did_col_name = "did"
+    gross_sales_closed_bills_col_name = "closeddbill_total_revenue"
+    gross_sales_sdrs_col_name = "sdr_total_revenue"
+    
+    # query to output a list of sdrs within the threshold for the specific outlet id
+    sdr_did_list, gross_sales_sdrs, gross_sales_closed_bills = extract_dids_for_outlet(
+        outlet_id,did_col_name,
+        gross_sales_sdrs_col_name,
+        gross_sales_closed_bills_col_name,
+        workdate,df)
+    
+    if len(sdr_did_list)==1 and sdr_did_list[0]==0: #assuming that len(sdr_did_list) will never be 0 due to the above code
+        return "FALSE, no suitable SDRs found"
+    else:
+        for i in range(0,len(sdr_did_list)):
+            current_did = sdr_did_list[i]
+            ## Function 1
+            sdr_workdate = str(df.query(did_col_name+'=='+str(current_did))['workdate'].iloc[0])
+            maj_closed_bill_workdate = str(df.query(did_col_name+'=='+str(current_did))['closedbill_mode_workdate'].iloc[0])
+            results_from_func_1 = sdr_workdate_check(sdr_workdate, maj_closed_bill_workdate,current_did)
+            output=[0,0,0,0]
+            output[1]=function2(gross_sales_sdrs)
+            output[2]=function3(sdr_did_list[0],i,gross_sales_sdrs)
+            output[3]=function4(sdr_did_list,gross_sales_closed_bills,gross_sales_sdrs)
+            # if sdr is wrong, move on to next sdr 
+            if isinstance(results_from_func_1,int) == False:
+                # print(results_from_func_1)
+                # terminates checking if this is the last SDR in the loop. UPDATE: no point since we r querying using workdate now. 
+                if i == len(sdr_did_list) - 1:
+                    return "wrong_workdate error, no suitable SDRs found"
+                continue
+            # return SDR as correct if this is the last SDR with correct workdate in the loop, terminates check
+            # limitation: if only one sdr has correct workdate, but the value is also wrong, they reprint next week with the right value
+            # will not be able to detect and verify
+            elif i == len(sdr_did_list)-1:
+                return current_did
+            else:
+                # print(output[1])
+                if output[1] == "total collection of all SDRs is the same":
+                    print(str(current_did)+"total collection values of all SDRs captured are same")
+                    return current_did
+                elif output[1] == "total collection of SDRs are different":
+                    # print(output[2])
+                    if output[2] == "latest sdr has highest total collection":
+                        print(str(current_did)+"latest higherst")    
+                        return current_did
+                    else:
+                        print("output from function 4, "+str(output[3]))
+                        return output[3]
+
+
+
+def get_current_system_sdr(date, outlets):
+        qstr = f"""
+        with suntec_outlets as (
+            select id, name
+            from outlet
+            where id in {outlets}
+            ),
+
+        dates as (
+            SELECT generate_series
+            ( '{date}'::date
+             , '{date}'::date 
+             , '1 day'::interval)::date as date
+        ),
+
+        suntec_outlet_info as (
+            select *
+            from suntec_outlets a
+            cross join dates b
+            where id in {outlets}
+            ),
+
+        ranked_sdr as (
+            select 
+            id as outlet_id, 
+            name,
+            date, 
+            receipt_id as did, 
+            status, 
+            timestamp, 
+            content::json, 
+            difference, 
+            trans_diff,
+            row_number() over (partition by outlet_id, date order by date, timestamp desc) as ranks
+            from (
+                select distinct *
+                from suntec_outlet_info a 
+                left join (select receipt_id, work_date, outlet_id, 
+                           status, timestamp, content, difference, trans_diff 
+                           from outlet_data_event) b 
+                on a.date = b.work_date and a.id = b.outlet_id
+            ) sub
+        )
+
+        select 
+            outlet_id, 
+            name,
+            date as workdate, 
+            did as system_did
+       --     content ->> 'reportTotalRevenue' as sdr_total_revenue
+        from ranked_sdr
+        where (ranks = 1) --or (ranks >= 2 and did is null)
+        and did is not null
+       order by outlet_id, date
+        """
+        return aimbox_rds.query(text = qstr)
+
+
+def get_updated_suntec_list(outlets): 
+    qstr = f"""
+    select id as outlet_id, name as outlet_name
+    from outlet
+    where id in {outlets}
+    """
+    return aimbox_rds.query(text = qstr)
+    
+
+
+
+
+#for i in range(diff_in_days.days+1):
+
+def query_from_db(date_to_query, outlets):
+    
+
+    ## Get SDR amount 
+    print('Raymond first step')
+    all_did_of_sdr = get_all_sdr(date_to_query, outlets)
+    print(all_did_of_sdr)
+    all_did_of_sdr['did'] = list(all_did_of_sdr.did.fillna(0).astype(int))
+    all_did_of_sdr['sdr_total_revenue'] = list(all_did_of_sdr.sdr_total_revenue.fillna(0).astype(float))
+
+    ## add closed bill total
+    print('Raymond second step')
+    #drop_duplicated_workdate = all_did_of_sdr[['outlet_id', 'date']].drop_duplicates().reset_index(drop = True)
+    final_closed_bill_total = pd.DataFrame()
+    for i in range(len(all_did_of_sdr)):
+        final_closed_bill_total = pd.concat([get_closed_bills_total(all_did_of_sdr.outlet_id[i], all_did_of_sdr.date[i]), final_closed_bill_total])
+    final_combined_step2 = all_did_of_sdr.merge(final_closed_bill_total[['outlet_id', 'date', 'closeddbill_total_revenue']], on = ['outlet_id', 'date'], how = 'left').drop_duplicates().reset_index(drop = True)
+    final_combined_step2['closeddbill_total_revenue'] = final_combined_step2['closeddbill_total_revenue'].fillna(0)
+    
+    #add SDR created_at
+    print('Raymond third step')
+    all_sdr_created_at = pd.DataFrame()
+    for i in range(len(final_combined_step2)):
+        all_sdr_created_at = pd.concat([get_sdr_created_at(final_combined_step2.outlet_id[i], final_combined_step2.did[i]), all_sdr_created_at])
+    final_combined_step3 = final_combined_step2.merge(all_sdr_created_at, on = 'did', how = 'left')
+
+    final_kept = final_combined_step3[final_combined_step3.created_at.isna()].reset_index(drop = True)
+
+    final_combined_step4 = final_combined_step3.dropna()
+    final_combined_step4 = final_combined_step4.reset_index(drop = True)
+    
+    # add closed billmode workdate
+    print('Raymond fourth step')
+    closed_bill_workdate = pd.DataFrame()
+    for i in range(len(final_combined_step4)):
+        #JABEZ's changes final_combined_step4.created_at[i]->final_combined_step4.date[i]
+        closed_bill_workdate = pd.concat([get_closed_bill_mode(final_combined_step4.outlet_id[i], final_combined_step4.date[i], final_combined_step4.did[i]), closed_bill_workdate])
+    final_combined = final_combined_step4.merge(closed_bill_workdate, on = ['outlet_id', 'date', 'did'], how = 'left')
+    final_kept['closedbill_mode_workdate'] = final_kept['date']
+    final_combined = pd.concat([final_combined, final_kept])
+    #JABEZ's changes
+    final_combined['closedbill_mode_workdate'] = final_combined['closedbill_mode_workdate'].fillna(date_to_query)
+    final_combined= final_combined.rename(columns={'date':'workdate'})
+    
+    
+    return final_combined
+
+
+
+
+def SDR_automation(df):
+    #df[['outlet_id','sdr_workdate']].drop_duplicates().groupby(['outlet_id'])['sdr_workdate'].apply(lambda x: ', '.join(x) ).reset_index()                    
+    final = df[['outlet_id', 'name', 'workdate']].drop_duplicates().groupby(['outlet_id', 'name'])['workdate'].apply(list).reset_index()
+    #workdates = final["workdate"].drop_duplicates().to_list()
+    #workdates = df['sdr_workdate'].drop_duplicates().tolist()
+    
+    
+    ##creating output for automated_mechanism
+    final_list = []
+    for i in range(len(final)):
+        for k in range(len(final.workdate[i])):
+           # print(final.outlet_id[i], final.workdate[i])
+            to_be_added = (final.outlet_id[i], final.name[i], final.workdate[i][k], sdr_error_detect(final.outlet_id[i], final.workdate[i][k],df))
+            final_list.append(to_be_added)
+    code_output = pd.DataFrame(final_list, columns = ['outlet_id', 'name', 'workdate', 'did'])
+    
+    return code_output
+
+
+#adding outlets with no SDRs    
+def combining_workdates_with_no_sdrs(code_output,date_to_query,list_of_outlets,final_df_output,df):
+    df_current_output = code_output
+    date_check = date_to_query
+    #df2 = pd.read_csv('All Available Tenants in Suntec - outlet_202108201125.csv')
+    df2 = get_updated_suntec_list(list_of_outlets)
+    list_of_outlets=list_of_outlets
+
+    outlet_id_1 = list(df_current_output['outlet_id'].drop_duplicates())
+    new_list = list(set(list_of_outlets).difference(outlet_id_1))
+    final_output2 = pd.DataFrame(columns = ['outlet_id', 'workdate', 'did'])
+    final_output2["outlet_id"] = new_list
+    final_output_sheet = pd.merge(final_output2,df2, on= ["outlet_id"], how="inner")
+
+    final_output_sheet = final_output_sheet.rename(columns={'outlet_name':'name'}) 
+    final_all_outlets = pd.concat([code_output,final_output_sheet])
+    final_all_outlets['workdate'] = final_all_outlets['workdate'].fillna(date_to_query)
+    ###for testing only
+    # final_all_outlets.to_csv('test.csv',index=False)
+    
+    # may not be very useful
+    final_all_outlets = final_all_outlets.fillna('Missing DID')
+    
+    
+    system_sdr = get_current_system_sdr(date_to_query, list_of_outlets)
+    final_output = final_all_outlets.merge(system_sdr, on = ['outlet_id', 'workdate', 'name'], how = 'left')
+    final_output = final_output.merge(df[['did', 'sdr_total_revenue']].rename(columns={'sdr_total_revenue':'system_sdr_amount', 'did':'system_did'}), on = 'system_did', how = 'left')
+    final_output = final_output.merge(df[['did', 'sdr_total_revenue']].rename(columns={'sdr_total_revenue':'code_sdr_amount'}), on = 'did', how = 'left')
+    final_output = final_output.merge(df[['outlet_id', 'workdate', 'closeddbill_total_revenue']], on = ['outlet_id', 'workdate'], how = 'left').rename(columns={'did':'code_did'})
+    final_output = final_output.drop_duplicates().reset_index(drop = True)
+    final_output = final_output.fillna('Missing')
+    final_output.to_csv(f'SDR_Auto_Error_Detection_{date_to_query}.csv',index=False)
+
+    #final concatenation
+    final_output.to_csv(f'SDR_Error_Detection_Cashback_Suntec_Outlets_{date_check}.csv',index=False)
+    
+    final_df_output = pd.concat([final_df_output, final_output])  
+    
+    return final_df_output
+
+
+
+def convert_to_int(x):
+    result = np.nan
+    try:
+        result = int(float(x))
+    except TypeError:
+        pass
+    finally:
+        return result
+
+def convert_to_float(x):
+    result = np.nan
+    try:
+        result = float(x)
+    except TypeError:
+        pass
+    finally:
+        return result
+        
+def same_did(code,system):
+    if code == 'FALSE, no suitable SDRs found' or system == 'Missing':
+        return 'Missing' 
+    else: 
+        if float(code) == float(system):
+            return True
+        else :
+            return False
+
+def same_amt(code,system):
+    if code == 'FALSE, no suitable SDRs found' or system == 'Missing':
+        return 'Missing' 
+    else: 
+        if float(code) == float(system):
+            return True 
+        else : 
+            return False 
+
+def captured_did_correctly(did, amt):
+    if did == True:
+        if bool(did) == amt:
+            return True
+        else:
+            return "" 
+    else: 
+        return ""
+
+def remove_suntec(x):
+    if x[-9:] == ' @ Suntec':
+        return x[:-9].rstrip()
+    elif x[-14:] == ' @ Suntec City':
+        return x[:-14].rstrip()
+    else:
+        return x.rstrip()
+    
+    
+#validation_formula
+def validation(amt):
+    if isinstance(amt,str) == False:
+        return float(amt)/1.07
+    else:
+        return amt
+
+
+
+#small diff
+def threshold(api, validation):
+    if abs(api-validation)<0.3:
+        return True
+    else: 
+        return False
+
+
+
+
+def valid_03(total_report_amt, api_value):
+    if float(api_value) == 0:
+        return 'FALSE'
+    elif abs(float(total_report_amt)-float(api_value))<=0.3:
+        return 'TRUE'
+    else:
+        return 'FALSE'
+
+
+    
+def valid_gst(sdr_total_revenue, api_value):
+    if float(api_value) == 0.0:
+        return 'FALSE'
+    elif abs(float(sdr_total_revenue)/1.07-float(api_value))<=0.3:
+        return 'TRUE'
+    else:
+        return 'FALSE'
+
+    
+def check(df, calculated_rev, total_revenue):
+    if df['type'][i] == 'special_gst' or df['type'][i] == 'gst':
+        df['Good To Go'][i] = valid_gst(calculated_rev, total_revenue)
+        df['Negligible Difference'][i] = valid_gst(calculated_rev, total_revenue)
+        df['Validation'][i] = calculated_rev/1.07
+    else:
+        df['Good To Go'][i] = valid_03(calculated_rev, total_revenue)
+        df['Negligible Difference'][i] = valid_03(calculated_rev, total_revenue)
+        df['Validation'][i] = calculated_rev    
+
+        
+        
+        
+        
+def get_total_report_amt(sdr_did, s, login_url, login_data):
+    url = 'https://portal.aimazing.co/dashboard/api/info_management/outlets/outletDataEventSummary?id='+sdr_did
+    s.post(login_url, data = login_data)
+    res = s.get(url).json()
+    total = 0 
+    if 'tally_checking' in res:
+        if 'payment_breakdown' in res['tally_checking']:
+            paym=res['tally_checking']['payment_breakdown']
+            for i in range(len(paym)):
+                if 'report_amount' in paym[i]:
+                    total = total + paym[i]['report_amount']
+        #         print(paym[i]['payment'])
+        #         print(paym[i]['report_amount'])
+    #     print(sdr_did)
+    #     print(total)
+    #     print()
+    return total
+
+
+
+def get_tax(sdr_did, s, login_url, login_data):
+    url = 'https://portal.aimazing.co/dashboard/api/info_management/outlets/outletDataEventSummary?id='+sdr_did
+    s.post(login_url, data = login_data)
+    res = s.get(url).json()
+    total = 0 
+    tax=0
+    if 'other_tax' in res['tally_checking']:
+        tax=res['tally_checking']['other_tax']
+    return tax
+        
+        
+
+        
