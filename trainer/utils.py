@@ -363,3 +363,280 @@ class Averager(object):
         if self.n_count != 0:
             res = self.sum / float(self.n_count)
         return res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import requests
+import pandas as pd
+import numpy as np
+from datetime import datetime, timedelta
+import datetime as dt
+import time
+import pandas.io.sql as psql
+import psycopg2 as pg
+import timeit
+import operator
+import re
+from db import *
+from tqdm import tqdm
+
+
+def portal_login(username, password):
+    logout = requests.get("https://portal.aimazing.co/dashboard/logout")
+    payload = {"username": username, "password": password}    
+    res = requests.post("https://portal.aimazing.co/dashboard/login", params=payload)
+    return res
+
+def get_receipt_image(did, cookies):
+    payload = {
+        "id": did,
+        "entry_type" : 'raster'
+    }
+    res = requests.get(
+        "https://portal.aimazing.co/dashboard/api/receipt_parsing/receiptData/image",
+        params=payload,
+        cookies=login.cookies
+    )
+    with open(f"{did}.png", 'wb') as f:
+            f.write(res.content)
+    return 
+
+def get_text_original(img_64, lang = 'eng2', preprocessors = ['filter-receipt'], psm = '6', preprocessor_args = {}):
+    payload = {
+        "img_base64": img_64,
+        "engine": "tesseract",
+        "engine_args": {
+            "config_vars": { "tessedit_do_invert": "0", "page_separator": "" },
+            "lang": lang,
+            "psm": psm
+        },
+        "preprocessors": preprocessors,
+        "preprocessor-args": preprocessor_args
+    }
+    res = requests.post(
+        "http://13.114.216.220:9292/ocr",
+        json=payload
+    )
+    return res
+
+def get_text_enhanced(img_64, lang = 'eng2', preprocessors = 'filter-receipt', psm = ''):
+    payload = {
+        "img_base64": img_64,
+        "engine": "tesseract",
+        "engine_args": {
+            "config_vars": { "tessedit_do_invert": "0", "page_separator": "" },
+            "lang": lang,
+            "psm": psm,
+            "dpi": "75"
+        },
+        "preprocessors": ["filter-receipt"],
+        "preprocessor-args": {}
+    }
+    #payload = json.dumps(payload)
+    res = requests.post(
+        "http://13.114.216.220:9292/ocr",
+        json=payload
+    )
+    return res
+
+def print_format(img_64, lang = 'eng2', preprocessors = 'filter-receipt', psm = ''):
+    payload = {
+        "img_base64": 'img_64',
+        "engine": "tesseract",
+        "engine_args": {
+            "config_vars": { "tessedit_do_invert": "0", "page_separator": "" },
+            "lang": lang,
+            "psm": psm,
+            "dpi": "75"
+        },
+        "preprocessors": ["filter-receipt"],
+        "preprocessor-args": {}
+    }
+    return payload
+
+login = portal_login(config["USER"]["NAME"], config["USER"]["PSWD"])
+
+def parsing_rule_by_outlet(id):
+    qstr = f"""
+    select 
+        a.outlet_name,
+        c.pattern as rule_group_name,
+        d.field as receipt_type,
+        a.outlet_id,
+        a.rule_group_id,
+        c.field,
+        c.regexp,
+        c.header_cut_point, 
+        c.footer_cut_point
+    from (
+        select
+            name as outlet_name,
+            owner_outlet_id as outlet_id,
+            rule_group_id
+        from device_info
+    ) a 
+    inner join 
+    group_use_parsing_rule b
+    on a.rule_group_id = b.group_id
+    inner join 
+        (
+        select 
+            id,
+            field, 
+            pattern, 
+            regexp, 
+            header_cut_point, 
+            footer_cut_point,
+            receipt_type_rule_id
+        from parsing_rule
+        where exist is true
+    ) c
+    on b.rule_id = c.id
+    inner join (select field, id from parsing_rule) d
+    on c.receipt_type_rule_id = d.id
+    where outlet_id = {id}
+    order by receipt_type
+    """
+    return aimbox_rds.query(text=qstr)
+
+def get_receipts(id, type_of_receipt):
+    if type_of_receipt == 'closed bill':
+        qstr = f"""
+        WITH transactions AS (
+        SELECT 
+            max(id) AS id
+        FROM 
+            aimbox
+        WHERE 
+            outlet_id = {id}
+            AND created_at >= now() - INTERVAL '3 months' 
+            AND type = '{type_of_receipt}'
+        GROUP BY 
+            outlet_id, workdate, receipt_id 
+        ),
+        trans_base AS (
+        SELECT 
+            * 
+        FROM (
+            SELECT      
+                id,      
+                outlet_id,      
+                receipt_id,      
+                date,      
+                time,      
+                text AS total,     
+                created_at,     
+                device_timestamp,     
+                detail ->> 'subtotal' AS subtotal,     
+                detail ->> 'GST' AS gst,     
+                detail ->> 'Service Charge' AS service_charge,     
+                detail ->> 'receipt_discount' AS receipt_discount,     
+                detail ->> 'rounding' AS rounding,     
+                detail ->> 'tips' AS tips,
+                raw_text
+                FROM 
+                aimbox a    
+            WHERE EXISTS (     
+                SELECT * FROM transactions WHERE a.id = id   
+            )     
+        ) a   
+        JOIN LATERAL (
+            SELECT 
+                MAX(id) AS tally_id   
+            FROM 
+                aimbox_data_health adh    
+            WHERE      
+                aimbox_id = a.id   
+        ) b   
+        ON TRUE 
+        )  
+        SELECT    
+            t.id, 
+            t.outlet_id, 
+            t.receipt_id, 
+            adh.has_total,   
+            adh.has_receipt_id,   
+            adh.has_workdate,   
+            adh.valid_monetary,   
+            adh.valid_formula_total,   
+            adh.valid_payment_total,   
+            adh.valid_rounding,  
+            t.date, 
+            t.time, 
+            t.total, 
+            t.subtotal, 
+            t.gst, 
+            t.service_charge, 
+            t.receipt_discount, 
+            t.rounding,
+            t.raw_text
+        FROM 
+            trans_base t 
+        JOIN 
+            aimbox_data_health adh 
+        ON 
+            t.tally_id = adh.id 
+        """
+        return aimbox.query(text=qstr)
+    elif type_of_receipt == 'sales day report':
+        qstr = f"""
+        SELECT
+            receipt_id,
+            outlet_id, 
+            work_date,
+            content::json -> 'reportTotalRevenue' as sdr_total,
+            content::json -> 'dashboardTotalRevenue' as dashboard_total,
+            content::json -> 'dashboardTransactions' as num_transaction
+        FROM 
+            outlet_data_event 
+        WHERE 
+            outlet_id = {id}
+        ORDER BY
+            work_date
+
+        """
+        return aimbox_rds.query(text=qstr)
+
+def get_string_from_match(line):
+    try:
+        return line[0][0]
+    except IndexError as error:
+        print('no line found')
+        return 'NULL'
+
+def get_value_from_match(line):
+    try:
+        return line[0][1]
+    except IndexError as error:
+        print('no regex round')
+        return ''
+        #raise IndexError('No regex match found.')
+
+def get_regex_text(regex, res_enhanced):
+    matched_line = re.findall(rf'({regex})', res_enhanced)
+    final_string = re.sub(rf'{get_value_from_match(matched_line)}', '',get_string_from_match(matched_line))
+    return final_string
+
+def get_captured_value(regex, res_enhanced):
+    matched_line = re.findall(rf'({regex})', res_enhanced)
+    final_string = get_value_from_match(matched_line)
+    return final_string
+
+def get_accuracy_field(df, field, captured_group): #df, time_text, time_captured_group
+    final = df.groupby([field]).agg({'did':"count", captured_group:'nunique'}).reset_index()
+    final = final.assign(accuracy_col = lambda x: x[captured_group].apply(lambda y: y/sum(x[captured_group]) if y == max(x[captured_group]) else 0)).accuracy_col.sum()
+    return final
